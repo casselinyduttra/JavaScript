@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Date</title>
+    <script>
+        var dataHora = new Date();
+    </script>
+</head>
+<body>
+   
+    <script>
+        var dia = dataHora.getDate();
+        var mes = dataHora.getMonth() +1;
+        var ano = dataHora.getFullYear();
+        document.write(dia + "/" + mes + "/" + ano + "<br>");
+        /*
+            getDay() - retorna o dia da semana, domingo = 0;
+            getHours - retorna a hora;
+            getMinutes - retorna os minutos;
+            getSeconds() -retorna os segundos;
+            toDateString () - retorna a data no formato 18/ 07 / 2022
+            toLocalString() - retorna a data e a hora.
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variaveis e constantes</title>
+    <script>
+        /* Formas de declarar variaveis: */
+        var jogador = "joaquim";
+        var vidas = 3;
+        var municao = 100;
+        var pontos = 0;
+        var tiros = 1500;
+        var acertos = 750;
+        var mediaDeAcertos = (acertos / tiros) * 100;
+
+        var jogador, vidas, municao;
+        jogador = "joaquim";
+        vidas = 3;
+        municao = 100;
+
+        document.write("Nome: <span style='color:#f00'>" + jogador + "</span><br>"); /* contatenada com quebra de linha*/
+        document.write("Vida: <span style='color:#f00'> " + vidas + "</span><br>");
+        document.write("Munição: <span style='color:#f00'> " + municao + "</span><br>");
+        document.write("Pontos: <span style='color:#f00'> " + (pontos + (vidas * 10)) + "</span><br>");
+        document.write("Media de Acertos: <span style='color:#f00'> " + mediaDeAcertos + "%</span><br>");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

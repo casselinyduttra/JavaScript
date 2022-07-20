@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html >
+    <head>   
+        <meta charset="utf-8">
+        <title>Lampada</title>
+    <script>
+        function on(){
+            document.getElementById("lamp").src = "on.jpg";
+        }
+        function off(){
+            document.getElementById("lamp").src = "off.jpg";
+        }
+        function piscar(){
+            var intervalo = 0;
+            var contador = 0;
+            while(contador < 10){
+                intervalo += 300;
+                setTimeout("document.getElementById('lamp').src = 'off.jpg'", intervalo);
+                intervalo += 300;
+                setTimeout("document.getElementById('lamp').src = 'off.jpg'", intervalo);
+                contador++;
+            }
+            
+        }
+       
+    </script>
+    </head>
+    
+    <body>
+        <h1>JS - Aula 07: Lampada </h1>
+            <img src="off.jpg" alt="Lâmpada" id='lamp'>
+       
+        <form>
+            <input type="button" value="ON" onclick="on()">
+            <input type="button" value="OFF" onclick="off()">
+            <input type="button" value="PISCAR" onclick="piscar()">
+        </form>     
+    </body>
+</html>

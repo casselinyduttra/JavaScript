@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>     
+        var valorTotal = parseFloat(prompt("Digite o valor total da compra"));
+        document.write("O valor total é de: " + valorTotal  + " € " + "<br>");
+
+        var qtdParcelas = parseFloat(prompt("Digite a quantidades de parcelas a financiar"));
+        document.write("A quantidade de parcelas foi de " + qtdParcelas + " X " + "<br>");
+
+        var valorParcela;
+        var valorJuros ;
+        if(qtdParcelas == 1){
+            valorParcela = valorTotal ;
+            document.write("O valor da parcela é de "  + valorParcela + " € " + "<br>");
+        } 
+        else if(qtdParcelas == 2){
+           valorJuros = (valorTotal * 0.3) ;
+           valorParcela = valorJuros / 2;
+            document.write("O valor da parcela é de "  + valorParcela  + " € " + "<br>");
+        }
+        else if(qtdParcelas == 4){
+            valorJuros = (valorTotal * 0.7) ;
+           valorParcela = valorJuros / 4;
+            document.write("O valor da parcela é de "  + valorParcela + " € " + "<br>");
+        }
+
+        
+    </script>
+    
+</head>
+<body>
+    <h4>Criar um script que solicite ao utilizador o valor total duma compra e a quantidade de parcelas a financiar e o sistema deve visualizar o valor de cada parcela de acordo com os juros da tabela abaixo. Utilizar campos de texto para ler os valores e dar a resposta ao utilizador.
+        1 parcela = 0%
+        2 parcelas = 3%
+        4 parcelas = 7%
+    </h4>
+</body>
+</html>

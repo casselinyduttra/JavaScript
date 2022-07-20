@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Functions - Eventos</title>
+    <script>
+       function cumprimento(){
+        var data = new Date();
+        hora = data.getHours();
+
+        if((hora >= 6) && (hora <= 12)){
+            alert("Bom dia");
+        }
+        else if((hora > 12) && (hora <= 18)){
+            alert("Boa Tarde");
+        }
+        else if(hora > 18){
+            alert("Boa Noite");
+        }
+        else{
+            alert("Boa Madrugada")
+        }
+        
+       }
+       function msg1(){
+            alert("Tu clicastes no botão")
+        }
+        function msg2(){
+            alert("Cursos sobre a imagem")
+        }
+    </script>
+</head>
+<body onload="cumprimento()">
+    <input type="button" value="Clique" onclick="msg1()">
+    <br>
+    <img src="#" alt="Falha de Carregamento" onmouseover="msg2()">
+    <script>
+        
+    </script>
+</body>
+</html>

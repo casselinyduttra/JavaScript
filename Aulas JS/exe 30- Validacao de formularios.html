@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Validacao de formularios</title>
+
+    <script>
+        function valida(){
+            if(document.f_aula.f_nome.value == ""){
+                alert("Coloque o Nome");
+                document.getElementById("f_nome").focus();
+                return false;
+            }
+           
+            if(document.f_aula.f_senha.value == ""){
+                alert("Coloque a senha");
+                document.getElementById("f_isenha").focus();
+                return false;
+            }
+
+            var data = new Date();
+            var dt = new Array;
+            var aux = document.f_aula.f_data.value;
+            dt = aux.split("/");
+
+            if(((dt[0] < 1) || (dt[0] > 31)) || ((dt[1] < 1) || (dt[1] > 12)) || ((dt[2] < getFullYear() - 150) || (dt[2] > dt.getFullYear()))){
+                alert("Coloque uma data valida");
+                document.getElementById("f_idata").focus();
+                return false;
+            } 
+            var vm = document.f_aula.f_email.value;
+            if(vm.search("@") == -1){
+                alert("Coloque um email valido");
+                document.getElementById("f_iemail").focus();
+                return false;
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <form name="f_aula" method="#" action="#" onsubmit="return valida()">
+    <label>Nome:</label><br>
+    <input type="text" name="f_nome" id="f_nome" maxlength="50"><br> <br>
+
+    <label>Senha:</label><br>
+    <input type="password" name="f_senha" id="f_isenha" maxlength="50"><br> <br>
+
+    <label>Data de Nascimento:</label><br>
+    <input type="text" name="f_data" id="f_idata" maxlength="10"><br> <br>
+
+    <label>Email:</label><br>
+    <input type="text" name="f_email" id="f_iemail" maxlength="50"><br> <br>
+
+    <input type="submit" value="gravar">
+</form>
+</body>
+</html>

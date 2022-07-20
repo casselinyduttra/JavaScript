@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>setInterval</title>
+    <style>
+        #div{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+        } 
+    </style>
+
+    <script>
+        var dx = 0;
+        var dy = 0;
+        var px = 0;
+        var py = 0;
+        var jg = document.getElementById("jogador");
+        var intervalo = setInterval(enterFrame, 20);
+
+        function enterFrame(){
+            px += dx *10;
+            py += dy *10;
+
+            jg = document.getElementById("jogador");
+            jg.style.left = px + "px";
+            jg.style.top = py + "px";
+        }
+        function load(){
+            document.addEventListener("keydown", teclaDw);
+            document.addEventListener("keyup", teclaUp);
+        }
+        function teclaDw(){
+            var tecla = event.keyCode;
+            if(tecla == 37){
+                //esquerda
+                dx = -1;
+            }
+            else if(tecla == 39){
+                //direita
+                dx = 1;
+            }
+            else if(tecla == 38){
+                //cima
+                dy = -1;
+            }
+            else if(tecla == 40){
+                //baixo
+                dy = +1;
+            }
+            function teclaUp(){
+                var tecla = event.keyCode;
+                if(tecla == 37){
+                    //esquerda
+                    dx = 0;
+                }
+                else if(tecla == 39){
+                    //direita
+                    dx = 0;
+                }
+                if(tecla == 38){
+                    //cima
+                    dy = 0;
+                }
+                else if(tecla == 40){
+                    //baixo
+                    dy = 0;
+                }
+            }
+        }
+        window.addEventListener("load", load);
+    </script>
+</head>
+<body>
+    <div id="jogador"></div>
+</body>
+</html>

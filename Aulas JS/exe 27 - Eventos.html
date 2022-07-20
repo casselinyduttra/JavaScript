@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Functions - Eventos</title>
+    <style>
+        #jogador{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+        }
+    </style>
+    <script>
+        function load(){
+            document.addEventListener("keydown", tecla);
+        }
+        function tecla(){
+            var vtecla = event.keyCode;
+            if(vtecla == 13){
+                alert("Tecla <<<enter>>> pressionada. \n\n o evento será removido \n\n")
+                    document.removeEventListener("keydown" , tecla);
+            }
+            else{
+                alert("Tecla pressionada: " +vtecla)
+            }
+        }
+        window.addEventListener("load" ,load);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

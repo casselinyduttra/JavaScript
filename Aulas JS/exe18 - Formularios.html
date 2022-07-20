@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Arrays</title>
+    <script>
+        var tag;
+    </script>
+</head>
+<body>
+    <form name="curso" action="#" method="post">
+        <label>Nome</label><br>
+        <input type="text" name="fNome"><br><br>
+        <label>Senha</label><br>
+        <input type="password" name="fSenha"><br><br>
+        <input type="submit" name="btEnviar" value="Enviar"><br><br>
+    </form>
+    <script>
+        tag=document.forms["curso"];
+        document.write(tag.elements["fNome"].value);
+        
+    </script>
+</body>
+</html>

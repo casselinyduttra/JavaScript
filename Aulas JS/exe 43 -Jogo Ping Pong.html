@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>manipulacao de strings - Slice()</title>
+    <style type="text/css">
+        #bola{
+            width: 20px;
+            height: 20px;
+            background-color: #000;
+            border-radius: 10px;
+        }
+        #jog1{
+            width: 20px;
+            height: 140px;
+            background-color: #000;
+        }
+        #jog2{
+            width: 20px;
+            height: 140px;
+            background-color: #000;
+        }
+        #campo{
+            width: 960px;
+            height: 500px;
+            border: 1px solid #000;
+        }
+
+    </style>
+    <script>
+        campoX=20, campoY=40, campoW=960, campoH=500;
+        dirJy=0;
+        velocidade=5, frames=40, dificuldade=1, pontos=0;
+
+        function teclaDw(){
+            var tecla = event.keyCode;
+            if(tecla == 38){
+                //cima
+                dirJy = -1;
+            }else if(tecla == 40){
+                //baixo
+                dirJy = +1;
+            }
+        }
+        function teclaUp(){
+            var tecla = event.keyCode;
+            if(tecla == 38){
+                //cima
+                dirJy = 0;
+            }else if(tecla == 40){
+                //baixo
+                dirJy = 0;
+            }
+        }
+        // ini jogo ok
+        function inijog(){
+            vjog1=document.getElementById("jog1");
+            posJ1x=20;
+            posJ1y=180;
+            vjog1.style.top=posJ1y + "px";
+            vjog1.style.left=posJ1x + "px";
+
+            vjog2=document.getElementById("jog2");
+            posJ2x=920;
+            posJ2y=180;
+            vjog2.style.top=posJ2y + "px";
+            vjog2.style.left=posJ2x + "px";
+        }
+        //Ini Bola ok
+        function iniBola(){
+            if((Math.random() * 10) < 5){
+                dirBolaX = -1;
+            }
+            else{
+                dirBolaX = 1;
+            }
+            if((Math.random() * 10) < 5){
+                dirBolaY = -1;
+            }
+            else{
+                dirBolaY = 1;
+            }
+            vBola = document.getElementById("bola");
+            posBolaX = 470;
+            posBolaY = 240;
+            vBola.style.top = posBolaY + "px";
+            vBola.style.left = posBolaX + "px";
+        }
+        // contola bola ok
+        function controlaBola(){
+            vBola = document.getElementById("bola");
+            posBolaX += (velocidade * dirBolaX);
+            posBolaY += (velocidade * dirBolaY);
+            vBola.style.top = posBolaY + "px";
+            vBola.style.left = posBolaX + "px";
+            if (posBolaY >= 480){
+                dirBolaY = -1;
+            }
+            else if(posBolaY <= 0){
+                dirBolaY = 1;
+            }
+            if((posBolaX >=940) || (posBolaX <= 0)){
+                reset();
+            }
+        }
+
+        function reset(){
+            posBolaX = 470;
+            posBolaY = 240;
+            clearInterval(jogo);
+            document.getElementById("pnIniciar").removeAttribute("disable");
+            if((Math.random() * 10) < 5){
+                dirBolaX =-1;
+            }else {
+                dirBolaX = 1;
+            }
+            if((Math.random() * 10) < 5){
+                dirBolaY =-1;
+            }else {
+                dirBolaY = 1;
+            }
+            vBola = document.getElementById("bola");
+            vBola.style.top = posBolaY + "px";
+            vBola.style.left = posBolaX + "px";
+
+            vjoga = document.getElementById("jog1");
+            posJ1x = 20;
+            posJ1y = 180;
+            vjoga.style.top = posJ1y + "px";
+            vjoga.style.left = posJ1x + "px";
+
+            vjog2 = document.getElementById("jog2");
+            posJ2x = 920;
+            posJ2y = 180;
+            vjog2.style.top = posJ2y + "px";
+            vjog2.style.left = posJ2x + "px";
+        }
+        //controla jogo ok
+        function controlaJog(){
+            if(dirBolaX = -1){
+                posJ1y += dirJy * 10;
+                vjoga = document.getElementById("jog1");
+                document.getElementById("jog1").style.backgroundColor ="#000";
+                document.getElementById("jog2").style.backgroundColor ="#F00";
+                vjoga.style.top = posJ1y + "px";
+                if((posJ1y + 180) >= campoH + 40){
+                    posJ1y += (dirJy * 10) * (-1);
+                }
+                else if((posJ1y) <= 0){
+                    posJ1y += (dirJy * 10) * (-1);
+                }
+            }
+            else{
+                posJ2y += dirJy * 10;
+                vjoga = document.getElementById("jog2");
+                document.getElementById("jog1").style.backgroundColor ="#F00";
+                document.getElementById("jog2").style.backgroundColor ="#000";
+                vjoga.style.top = posJ2y + "px";
+                if((posJ2y + 180) >= campoH + 40){
+                    posJ2y += (dirJy * 10) * (-1);
+                }else if((posJ2y) <= 0){
+                    posJ2y += (dirJy * 10) * (-1);
+                }
+            }
+        }
+        // colisao ok
+        function colisao(){
+            if((posBolaX <= posJ1x + 20) && ((posBolaY + 20 >= posJ1y) && (posBolaY <= posJ1y + 180))){
+                dirBolaX = 1;
+                clearInterval(jogo);
+                if(frames > 8){
+                    frames -= 2;
+                }
+                jogo = setInterval(enterFrame, frames);
+                pontos += dificuldade;
+                dificuldade += 1;
+                document.getElementById("pnPts").value=pontos;
+                document.getElementById("pnDif").value=dificuldade;
+            }
+
+            if((posBolaX >= posJ2x - 20) && ((posBolaY + 20 >= posJ2y) && (posBolaY <= posJ2y + 180))){
+                dirBolaX = -1;
+                clearInterval(jogo);
+                if(frames > 8){
+                    frames -= 2;
+                }
+                jogo = setInterval(enterFrame, frames);
+                pontos += dificuldade;
+                dificuldade += 1;
+                document.getElementById("pnPts").value=pontos;
+                document.getElementById("pnDif").value=dificuldade;
+            }
+        }
+
+        function enterFrame(){
+            controlaBola();
+            controlaJog();
+            colisao();
+        }
+       function preparaJogo(){
+        document.addEventListener("keydown", teclaDw);
+        document.addEventListener("keyup", teclaUp);
+        iniBola();
+        inijog();
+       }
+       function inicioJogo(){
+        frames=50;
+        pontos=0;
+        dificuldade=1;
+        document.getElementById("pnPts").value=pontos;
+        document.getElementById("pnDif").value=dificuldade;
+        jogo=setInterval(enterFrame, frames);
+        document.getElementById("pnIniciar").disabled="disabled";
+       }
+    </script>
+</head>
+<body onload="preparaJogo()">
+    <div id="painel">
+        <label>Dificuldades</label>
+        <input type="text" id="pnDif" value="1">
+        <label for="#">Pontos</label>
+        <input type="text" id="pnPts" value="0">
+        <input type="button" value="iniciar" id="pnIniciar" onclick="inicioJogo">
+    </div>
+    <div id="campo" style="position: absolute; top: 40px; left:20px;">
+        <div id="bola" style="position: absolute; top:240px; left:470px;"></div>
+        <div id="jog1" style="position: absolute; top:180px; left:20px;"></div>
+        <div id="jog2" style="position: absolute; top:180px; left:920px;"></div>
+    </div>
+    
+</body>
+</html>

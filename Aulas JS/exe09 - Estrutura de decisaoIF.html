@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores Logicos</title>
+    <script>
+       var energia = 100;
+       var velocidade;
+       if((energia > 80) && (energia >= 100)){
+        document.write("Energia alta");
+        velocidade = 100;
+       }else if((energia > 60) && (energia <= 81){
+        document.write("Energia boa");
+        velocidade = 80;
+       }else if((energia > 40) && (energia <= 61)){
+        document.write("Energia media");
+        velocidade = 60;
+       }
+       else if((energia > 20) && (energia <= 41)){
+        document.write("Energia baixa");
+        velocidade = 40;
+       }else if((energia >1) && (energia <= 21)){
+        document.write("Energia critica");
+        velocidade = 20;
+       }else{
+        document.write("Jogador Morto");
+        velocidade = 0;
+       }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

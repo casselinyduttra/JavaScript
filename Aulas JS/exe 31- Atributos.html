@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Atributos HTML - setAttribute</title>
+
+    <style>
+        .txth1{
+            color: #F00;
+            font-size: 45pt;
+        }
+    </style>
+    <script>
+        function classe(){
+            document.getElementById("teste").setAttribute("class", "txth1");
+            document.getElementById("teste").setAttribute("style", "background-color:#AAA;");
+        }
+    </script>
+</head>
+<body onload="classe()">
+    <h1 id="teste">Curso de JavaScript</h1>
+</body>
+</html>
