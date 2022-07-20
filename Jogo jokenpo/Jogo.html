@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Jokenpô</title>
+
+    <script>
+
+       function jogar(){
+	if(document.getElementById("pedra").checked == false && document.getElementById("papel").checked == false && document.getElementById("tesoura").checked == false){
+		alert("Selecione uma opção");
+	} else{
+		var sorteio = Math.floor(Math.random() * 3);
+		switch(sorteio){
+			case 0:
+				document.getElementById("pc").src="pcpedra.png";
+				break;
+			case 1:
+				document.getElementById("pc").src="pcpapel.png";
+				break;
+			case 2:
+				document.getElementById("pc").src="pctesoura.png";
+				break;
+		}		
+		if ((document.getElementById("pedra").checked == true && sorteio == 0) || (document.getElementById("papel").checked == true && sorteio == 1) || (document.getElementById("tesoura").checked == true && sorteio == 2)){
+			document.getElementById("placar").innerHTML="Empate";
+		} else if ((document.getElementById("pedra").checked == true && sorteio == 2) || (document.getElementById("papel").checked == true && sorteio == 0) || (document.getElementById("tesoura").checked == true && sorteio == 1)){
+			document.getElementById("placar").innerHTML="Jogador Venceu";
+		} else {
+			document.getElementById("placar").innerHTML="Computador Venceu";
+		}
+	} 
+}
+function limpar(){
+	document.getElementById("pc").src="pc.png";
+	document.getElementById("placar").innerHTML="";
+}
+    </script>
+</head>
+<body>
+    <h1>JS- Jokenpô</h1>
+    <h3>Jogador:</h3>
+    <img src="pedra.png" alt="Pedra">
+    <img src="papel.png" alt="Papel">
+    <img src="tesoura.png" alt="Tesoura">
+    <form name="jokenpo">
+        <input type="radio" id="pedra" name="grupo">Pedra
+        <input type="radio" id="papel" name="grupo">Papel
+        <input type="radio" id="tesoura" name="grupo">Tesoura 
+        <p>
+            <input type="button" value="JOGAR" onclick="jogar()">
+            <input type="button" value="LIMPAR" onclick="limpar()">
+        </p>
+    </form>
+    <hr>
+    <h3>Computador: </h3>
+    <img src="pc.png" alt="PC" id="pc">
+    <hr>
+    <h3 id="placar"></h3>
+    <script src="jokenpo.js"></script>
+</body>
+</html>

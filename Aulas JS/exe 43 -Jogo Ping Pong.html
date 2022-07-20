@@ -138,11 +138,11 @@
         }
         //controla jogo ok
         function controlaJog(){
-            if(dirBolaX = -1){
+            if(dirBolaX == -1){ //falta um sinal de igual, tem que ficar ==
                 posJ1y += dirJy * 10;
                 vjoga = document.getElementById("jog1");
-                document.getElementById("jog1").style.backgroundColor ="#000";
-                document.getElementById("jog2").style.backgroundColor ="#F00";
+                document.getElementById("jog1").style.backgroundColor ="#F00";
+                document.getElementById("jog2").style.backgroundColor ="#000";
                 vjoga.style.top = posJ1y + "px";
                 if((posJ1y + 180) >= campoH + 40){
                     posJ1y += (dirJy * 10) * (-1);
@@ -154,8 +154,8 @@
             else{
                 posJ2y += dirJy * 10;
                 vjoga = document.getElementById("jog2");
-                document.getElementById("jog1").style.backgroundColor ="#F00";
-                document.getElementById("jog2").style.backgroundColor ="#000";
+                document.getElementById("jog1").style.backgroundColor ="#000";
+                document.getElementById("jog2").style.backgroundColor ="#F00";
                 vjoga.style.top = posJ2y + "px";
                 if((posJ2y + 180) >= campoH + 40){
                     posJ2y += (dirJy * 10) * (-1);
@@ -172,7 +172,7 @@
                 if(frames > 8){
                     frames -= 2;
                 }
-                jogo = setInterval(enterFrame, frames);
+                jogo = setInterval(enterFrame,frames);
                 pontos += dificuldade;
                 dificuldade += 1;
                 document.getElementById("pnPts").value=pontos;
@@ -185,7 +185,7 @@
                 if(frames > 8){
                     frames -= 2;
                 }
-                jogo = setInterval(enterFrame, frames);
+                jogo = setInterval(enterFrame,frames);
                 pontos += dificuldade;
                 dificuldade += 1;
                 document.getElementById("pnPts").value=pontos;
@@ -198,21 +198,21 @@
             controlaJog();
             colisao();
         }
-       function preparaJogo(){
-        document.addEventListener("keydown", teclaDw);
-        document.addEventListener("keyup", teclaUp);
-        iniBola();
-        inijog();
-       }
-       function inicioJogo(){
-        frames=50;
-        pontos=0;
-        dificuldade=1;
-        document.getElementById("pnPts").value=pontos;
-        document.getElementById("pnDif").value=dificuldade;
-        jogo=setInterval(enterFrame, frames);
-        document.getElementById("pnIniciar").disabled="disabled";
-       }
+        function preparaJogo(){
+            document.addEventListener("keydown", teclaDw);
+            document.addEventListener("keyup", teclaUp);
+            iniBola();
+            inijog();
+        }
+        function inicioJogo(){
+            frames=50;
+            pontos=0;
+            dificuldade=1;
+            document.getElementById("pnPts").value=pontos;
+            document.getElementById("pnDif").value=dificuldade;
+            jogo=setInterval(enterFrame, frames);
+            document.getElementById("pnIniciar").disabled="disabled";
+        }
     </script>
 </head>
 <body onload="preparaJogo()">
@@ -221,7 +221,7 @@
         <input type="text" id="pnDif" value="1">
         <label for="#">Pontos</label>
         <input type="text" id="pnPts" value="0">
-        <input type="button" value="iniciar" id="pnIniciar" onclick="inicioJogo">
+        <input type="button" value="iniciar" id="pnIniciar" onclick="inicioJogo()"> <!-- Falta os () no final do inicioJogo-->
     </div>
     <div id="campo" style="position: absolute; top: 40px; left:20px;">
         <div id="bola" style="position: absolute; top:240px; left:470px;"></div>
